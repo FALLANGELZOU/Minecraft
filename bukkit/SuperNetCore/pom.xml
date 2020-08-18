@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <properties>
+<!--        保证跨平台正确-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+
+        <default-config.enter-path>com/angel/core</default-config.enter-path>
+        <default-config.author>Angel_zou</default-config.author>
+        <default-config.api-version>1.16</default-config.api-version>
+        <default-config.version>0.0.1</default-config.version>
+        <default-config.name>SuperNetCore</default-config.name>
+        <default-config.main>com.angel.core.Main</default-config.main>
+
+    </properties>
+    <groupId>com.angel</groupId>
+    <artifactId>SuperNetCore</artifactId>
+    <version>0.0.1</version>
+
+
+    <build>
+
+        <resources>
+<!--            配置文件可以使用maven变量-->
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+<!--        引入第三方库打包-->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <minimizeJar>true</minimizeJar>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <createSourcesJar>false</createSourcesJar>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+<!--        <dependency>-->
+<!--&lt;!&ndash;            参数检验&ndash;&gt;-->
+<!--            <groupId>javax.annotation</groupId>-->
+<!--            <artifactId>jsr250-api</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+<!--            参数检验-->
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.1.0.Final</version>
+        </dependency>
+        <!-- hibernate validator-->
+        <dependency>
+<!--            参数检验-->
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.2.0.Final</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.12</version>
+            <!--自动化getter setter-->
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.bukkit</groupId>-->
+<!--            <artifactId>bukkit</artifactId>-->
+<!--            <version>1.12.1-R0.1-SNAPSHOT</version>-->
+<!--            &lt;!&ndash;            1.12.1-R0.1-SNAPSHOT&ndash;&gt;-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+                <dependency>
+                    <groupId>org.spigotmc</groupId>
+                    <artifactId>spigot-api</artifactId>
+                    <version>1.12.1-R0.1-SNAPSHOT</version>
+                    <scope>system</scope>
+                    <systemPath>${basedir}/lib/spigot-1.16.1.jar</systemPath>
+
+                </dependency>
+    </dependencies>
+<!--    <dependencies>-->
+<!--        &lt;!&ndash;This adds the Spigot API artifact to the build &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.spigotmc</groupId>-->
+<!--            <artifactId>spigot-api</artifactId>-->
+<!--            <version>1.12.1-R0.1-SNAPSHOT</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;This adds the Bukkit API artifact to the build &ndash;&gt;-->
+<!--        &lt;!&ndash; Do not include this in the pom.xml file if the Spigot API is already added &ndash;&gt;-->
+
+<!--    </dependencies>-->
+
+</project>

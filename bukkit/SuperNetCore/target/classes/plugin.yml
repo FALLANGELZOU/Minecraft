@@ -1,0 +1,5 @@
+name: SuperNetCore
+main: com.angel.core.Main
+api-version: 1.16
+version: 0.0.1
+author: Angel_zou
