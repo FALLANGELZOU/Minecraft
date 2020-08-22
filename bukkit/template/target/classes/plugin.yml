@@ -1,0 +1,5 @@
+name: TemplatePlugin
+main: com.angel.core.Main
+api-version: 1.13
+version: 0.0.1
+author: Angel_zou

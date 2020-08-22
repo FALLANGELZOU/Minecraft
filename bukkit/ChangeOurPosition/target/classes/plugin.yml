@@ -1,0 +1,5 @@
+name: ChangeOurPosition
+main: com.angel.bukkit.ChangeOurPosition.Main
+api-version: 1.13
+version: 0.0.1
+author: Angel_zou

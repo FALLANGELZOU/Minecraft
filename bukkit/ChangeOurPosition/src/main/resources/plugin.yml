@@ -1,0 +1,5 @@
+name: ${default-config.name}
+main: ${default-config.main}
+api-version: ${default-config.api-version}
+version: ${default-config.version}
+author: ${default-config.author}

@@ -1,0 +1,6 @@
+com\angel\bukkit\ChangeOurPosition\PlayerListener.class
+com\angel\bukkit\ChangeOurPosition\Store$task.class
+com\angel\bukkit\ChangeOurPosition\Main.class
+com\angel\bukkit\ChangeOurPosition\Room.class
+com\angel\bukkit\ChangeOurPosition\Commands\CopCommand.class
+com\angel\bukkit\ChangeOurPosition\Store.class

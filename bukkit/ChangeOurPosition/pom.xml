@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.angel.bukkit</groupId>
+    <artifactId>ChangeOurPosition</artifactId>
+    <version>0.0.1</version>
+
+    <!--    配置文件-->
+    <properties>
+        <!--        保证跨平台正确-->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <default-config.enter-path>com/angel/bukkit</default-config.enter-path>
+        <default-config.author>Angel_zou</default-config.author>
+        <default-config.api-version>1.13</default-config.api-version>
+        <default-config.version>0.0.1</default-config.version>
+        <default-config.name>ChangeOurPosition</default-config.name>
+        <default-config.main>com.angel.bukkit.ChangeOurPosition.Main</default-config.main>
+
+    </properties>
+
+    <build>
+        <resources>
+            <!--            配置文件可以使用maven变量-->
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!--            引入第三方库打包-->
+            <!--            会生成无依赖jar-->
+            <!--            全部依赖jar-->
+            <!--            简化jar-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <minimizeJar>true</minimizeJar>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <createSourcesJar>false</createSourcesJar>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.1-R0.1-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/spigot-1.16.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.angel.bukkit</groupId>
+            <artifactId>TemplatePlugin</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.12</version>
+            <!--自动化getter setter-->
+        </dependency>
+
+
+
+    </dependencies>
+
+</project>

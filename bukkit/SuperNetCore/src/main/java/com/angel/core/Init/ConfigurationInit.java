@@ -55,6 +55,7 @@ public class ConfigurationInit {
     private void saveAllConfig(String path) throws ConfigNotExistException {
         //System.out.println("加载"+path);
         ConfigurationHandlerImpl configurationHandler = new ConfigurationHandlerImpl(path);
+
         if(configurationHandler.getFileConfiguration() != null)return;
         //System.out.println("配置：" + path);
         Main.getInstance().saveResource(path,false);
