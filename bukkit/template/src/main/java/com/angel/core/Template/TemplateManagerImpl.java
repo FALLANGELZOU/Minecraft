@@ -1,7 +1,6 @@
-package com.angel.core;
+package com.angel.core.Template;
 
 import com.angel.core.Init.InitHandler;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 import org.reflections.scanners.FieldAnnotationsScanner;
@@ -10,32 +9,36 @@ import org.reflections.scanners.MethodParameterScanner;
 import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ConfigurationBuilder;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @Author: Angel_zou
- * @Date: Created in 15:40 2020/8/19
+ * @Date: Created in 13:58 2020/9/5
  * @Connection: ahacgn@gmail.com
- * @Description: 入口文件
+ * @Description: 具体实现
  */
-@Deprecated
-public abstract class TemplatePlugin extends JavaPlugin{
-    private static TemplatePlugin GLOBAL = null;
-    private Reflections reflections;
-
-    public Reflections getReflections(){
-        return reflections;
+public class TemplateManagerImpl implements TemplateManager{
+    private Reflections reflections = null;
+    private static TemplateManager TM = null;
+    private JavaPlugin plugin = null;
+    public TemplateManagerImpl(@NotNull JavaPlugin plugin){
+        this.plugin = plugin;
+        init();
+        TM = this;
     }
 
-    public static TemplatePlugin getInstance(){
-        return GLOBAL;
+    public static TemplateManager getInstance(){
+        return TM;
     }
 
-    @Override
-    public void onEnable() {
-        super.onEnable();
-        GLOBAL = this;
-        this.reflections = new Reflections(
+
+    /**
+     * 全局化
+     */
+    private void init(){
+        reflections = new Reflections(
                 new ConfigurationBuilder()
-                        .forPackages(this.getClass().getPackage().getName())
+                        .forPackages(plugin.getClass().getPackage().getName())
                         .addScanners()
                         .addScanners(new SubTypesScanner()) // 添加子类扫描工具
                         .addScanners(new FieldAnnotationsScanner()) // 添加 属性注解扫描工具
@@ -46,14 +49,7 @@ public abstract class TemplatePlugin extends JavaPlugin{
     }
 
     @Override
-    public void onDisable() {
-        super.onDisable();
-        Bukkit.getScheduler().cancelTasks(this);
+    public JavaPlugin getPlugin() {
+        return plugin;
     }
-
-    @Override
-    public void onLoad() {
-        super.onLoad();
-    }
-
 }

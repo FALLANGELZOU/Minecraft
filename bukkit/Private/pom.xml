@@ -5,28 +5,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.angel.bukkit</groupId>
-    <artifactId>TemplatePlugin</artifactId>
+    <artifactId>Private</artifactId>
     <version>0.0.1</version>
 
-<!--    配置文件-->
     <properties>
         <!--        保证跨平台正确-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-
-        <default-config.enter-path>com/angel/core</default-config.enter-path>
+        <default-config.enter-path>com/angel/bukkit</default-config.enter-path>
         <default-config.author>Angel_zou</default-config.author>
         <default-config.api-version>1.13</default-config.api-version>
         <default-config.version>0.0.1</default-config.version>
-        <default-config.name>TemplatePlugin</default-config.name>
-        <default-config.main>com.angel.core.demo.Main</default-config.main>
+        <default-config.name>Private</default-config.name>
+        <default-config.main>com.angel.bukkit.Private.Main</default-config.main>
 
     </properties>
 
     <build>
-<!--        打包文件配置-->
-
         <resources>
             <!--            配置文件可以使用maven变量-->
             <resource>
@@ -35,12 +31,11 @@
             </resource>
         </resources>
 
-
         <plugins>
-<!--            引入第三方库打包-->
-<!--            会生成无依赖jar-->
-<!--            全部依赖jar-->
-<!--            简化jar-->
+            <!--            引入第三方库打包-->
+            <!--            会生成无依赖jar-->
+            <!--            全部依赖jar-->
+            <!--            简化jar-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -70,19 +65,20 @@
                 </executions>
             </plugin>
         </plugins>
-
-
-
     </build>
 
     <dependencies>
-
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.16.1-R0.1-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/spigot-1.16.1.jar</systemPath>
+            <systemPath>${basedir}/lib/spigot-1.12.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.angel.bukkit</groupId>
+            <artifactId>TemplatePlugin</artifactId>
+            <version>0.0.1</version>
         </dependency>
 
         <dependency>
@@ -92,54 +88,8 @@
             <!--自动化getter setter-->
         </dependency>
 
-        <dependency>
-<!--            json-->
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
-        </dependency>
-
-        <dependency>
-            <!--            参数检验-->
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-        </dependency>
-        <!-- hibernate validator-->
-        <dependency>
-            <!--            参数检验-->
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>5.2.0.Final</version>
-        </dependency>
-
-        <dependency>
-<!--            单元检测-->
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
 
 
-        <dependency>
-<!--            反射框架-->
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.9.11</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>21.0</version>
-        </dependency>
-
-        <dependency>
-<!--            封装ASM-->
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.2.4</version>
-        </dependency>
     </dependencies>
+
 </project>

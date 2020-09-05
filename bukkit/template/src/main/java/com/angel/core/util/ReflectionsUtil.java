@@ -1,6 +1,8 @@
 package com.angel.core.util;
 
+import com.angel.core.Template.TemplateManager;
 import com.angel.core.TemplatePlugin;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.annotation.Annotation;
 import java.util.Set;
@@ -16,6 +18,15 @@ public class ReflectionsUtil {
 //        System.out.println("******************");
 //        System.out.println(TemplatePlugin.getInstance().getClass().getPackage().getName());
 //        System.out.println("******************");
+
+        if(TemplatePlugin.getInstance() == null){
+            return null;
+        }
         return TemplatePlugin.getInstance().getReflections().getTypesAnnotatedWith(cls);
     }
+
+
+
+
+
 }
